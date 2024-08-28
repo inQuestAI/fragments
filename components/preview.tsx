@@ -14,6 +14,7 @@ import { ExecutionResult } from '@/lib/types'
 import { DeepPartial } from 'ai'
 import { ChevronsRight, LoaderCircle } from 'lucide-react'
 import { Dispatch, SetStateAction } from 'react'
+import ShareBtn from './share-btn'
 
 export function Preview({
   teamID,
@@ -96,16 +97,18 @@ export function Preview({
               </TabsTrigger>
             </TabsList>
           </div>
+         
           {result && (
             <div className="flex items-center justify-end gap-2">
-              {isLinkAvailable && (
+             <ShareBtn artifact={fragment} url={isLinkAvailable ? result.url : ''} />
+              {/* {isLinkAvailable && (
                 <DeployDialog
                   url={result.url!}
                   sbxId={result.sbxId!}
                   teamID={teamID}
                   accessToken={accessToken}
                 />
-              )}
+              )} */}
             </div>
           )}
         </div>
